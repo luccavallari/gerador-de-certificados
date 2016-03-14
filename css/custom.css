@@ -1,0 +1,54 @@
+.iteml{
+	list-style: none;
+	display: block;
+	width: 100%;
+	padding: 5px;
+	border-bottom: 1px solid #ccc; 
+	text-align: center;
+}
+.iteml:hover{
+	cursor: pointer;
+}
+.desm{
+	background: #fff;
+}
+.divstud{
+	max-height: 400px;
+	overflow-y: scroll; 
+	overflow-x: hidden;
+}
+.itemladded{
+	list-style: none;
+}
+.spanremove:hover{
+	cursor: pointer;
+	float: right;
+}
+.spanremove{
+	float: right;
+}
+.bstud{
+	background: #069;
+	width: 100%;
+	overflow-x: hidden; 
+	color: #fff;
+}
+
+.bstud input{
+	color: #555;
+}
+.input-lg{
+	border: 2px solid #000; 
+	width: 600px;
+	text-align: center;
+}
+.coursebox{
+	border: 1px solid #fff;
+	border-radius: 5px;
+	min-height: 30px;
+	background: #fff;
+	padding: 12px;
+}
+textarea{
+	max-width: 100%;
+}
