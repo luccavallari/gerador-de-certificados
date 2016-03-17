@@ -77,7 +77,7 @@ class Student extends CI_Controller {
 		$this->id_course = $id_course;
 		$data['admin'] = $this->crud->get('admin');
 		$data['img_singnatures'] = $this->crud->get('courses_images', array('id_course' => $this->id_course, 'type' => 'singnature'));
-		$html=$this->load->view('certificate', $data, true);
+		$html= ($this->load->view('certificate', $data, true));
 		//echo $html;
 		//this the the PDF filename that user will get to download
 		$pdfFilePath = "certificate_".date('Ymd_His').".pdf";
@@ -85,8 +85,9 @@ class Student extends CI_Controller {
 	    $pdf = $this->pdf->load("L");
 	    //$pdf->SetHTMLFooter( $this->footer() ); 
 	    $pdf->SetHTMLHeader( $this->header() ); 
-	    $pdf->WriteHTML( $html ); // write the HTML into the PDF
-	    $pdf->Output( $pdfFilePath, 'D' ); // save to file because we can
+	    $pdf->WriteHTML( $html );
+	    
+	    $pdf->Output( $pdfFilePath, 'D' ); 
 	}
 	private function header(){
 		$logos = $this->crud->get('courses_images', array('id_course' => $this->id_course, 'type' => 'logo'));

@@ -13,7 +13,7 @@ class Pdf {
         include_once APPPATH.'/third_party/mpdf/mpdf.php'; 
 
         //altera o modo entre portrait e landscape
-        if(strtoupper($orientation) == "L")
+        if(strtoupper($orientation) === "L")
             $mode = "A4-L";
         else
             $mode = "A4";

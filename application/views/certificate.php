@@ -1,3 +1,7 @@
+<?php 
+	//pdf não abria sem isto.
+	ob_start();
+?>
 <body style="background: url(<?=base_url('images/cert-bg.png')?>) no-repeat; padding: 0 !important; margin: 0 auto; ">
 	<?php 
 		$this->courses = $courses;
