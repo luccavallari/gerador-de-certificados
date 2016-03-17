@@ -86,7 +86,6 @@ class Student extends CI_Controller {
 	    //$pdf->SetHTMLFooter( $this->footer() ); 
 	    $pdf->SetHTMLHeader( $this->header() ); 
 	    $pdf->WriteHTML( $html );
-	    
 	    $pdf->Output( $pdfFilePath, 'D' ); 
 	}
 	private function header(){

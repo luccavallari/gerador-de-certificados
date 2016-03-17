@@ -9,7 +9,6 @@
 		if( trim($courses[0]->long_description) != "" ):
 			//faz os replaces das pseudovariaveis
 			$desc = $courses[0]->long_description;
-
 			echo '<br><br><br><br><br><br><br><br>';
 			///replaces
 			$desc = str_replace('[student]',"<strong>".strtoupper($courses[0]->student_name)."</strong>", $desc);
@@ -18,11 +17,8 @@
 			$desc = str_replace('[course]',"<strong>".strtoupper($courses[0]->course_name)."</strong>", $desc);
 			$desc = str_replace('[instituition]',"<strong>".strtoupper($admin[0]->company_name)."</strong>", $desc);
 			$desc = str_replace('[instituicao]',"<strong>".strtoupper($admin[0]->company_name)."</strong>", $desc);
-			
 			///fim replaces
-			
 			echo "<p style='font-size: 23px; text-align: justfy; font-family: verdana; text-transform: uppercase; width: 90%; margin-left: 10%;'>".$desc."</p>";
-			
 			//only in pt-br.
 			if( config_item('language') == "portuguese-brazilian" && $admin[0]->company_city != "" ):
 				    $mes = array(
@@ -41,7 +37,6 @@
 				    );
 				echo '<p style="width: 90%; text-align: right; font-size: 18px; "><strong>'.$admin[0]->company_city.', '.date('d').' de '.$mes[date('M')].' de '.date('Y').'<strong></p>';
 			endif;
-
 		else:
 	?>
 		<div>
@@ -51,7 +46,6 @@
 				<!--<span style="text-align: center; font-family: 'anglotext'; font-size: 110px; color: #333; margin-top: 0;"><?=$courses[0]->student_name?></span>-->
 				<span style="text-align: center; font-family: arial; font-size: 80px; color: #333; margin-top: 0;"><?=$courses[0]->student_name?></span>
 			</div>
-
 			<div style="text-align: center;">
 				<span style="font-family: sans-serif;"><?=$this->lang->line('cert_sub_title_course')?></span><br>
 				<strong><span style="text-align: center; font-family: 'sans-serif'; font-size: 40px; color: #333; margin-top: 0;"><?=$courses[0]->course_name?></span></strong>
@@ -59,7 +53,6 @@
 					<?php 
 						if( $courses[0]->course_date != "" )
 							echo " ".$courses[0]->course_date;
-
 						if( $courses[0]->course_time != "" )
 							( $courses[0]->course_date != "" ) ? " - " : "";
 							echo " ".$courses[0]->course_time."h";
@@ -79,4 +72,3 @@
 		?>
 	</div>
 </body>
-
