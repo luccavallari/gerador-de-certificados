@@ -88,5 +88,10 @@
     <script src="<?=base_url('js/bootstrap.min.js')?>"></script>
     <script src="<?=base_url('js/datatables.min.js')?>"></script>
     <script src="<?=base_url('js/custom.js')?>"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>tinymce.init({ 
+      selector:'textarea',
+      menubar : false
+     });</script>
   </body>
 </html>
