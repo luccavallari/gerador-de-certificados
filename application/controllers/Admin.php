@@ -116,7 +116,7 @@ class Admin extends CI_Controller {
 		if( $course_id === "add" ):
 			//define configuraçoes e abre lib de upload
 			$config['upload_path']          = FCPATH.'media';
-	        $config['allowed_types']        = 'gif|jpg|png';
+	        $config['allowed_types']        = 'jpg|png';
 	        $config['max_size']             = 10000;
 	        $config['max_width']            = 5000;
 	        $config['max_height']           = 5000;

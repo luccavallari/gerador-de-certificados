@@ -67,7 +67,7 @@ class Student extends CI_Controller {
 		$j['students s'] = "sc.id_student = s.id";
 		$j['courses c'] = "sc.id_course = c.id";
 		//fields
-		$f = "sc.id as id_class, c.description as course_name, c.long_description, c.id as id_course, s.id as id_student, s.email, s.name as student_name, c.date as course_date, c.time as course_time";
+		$f = "sc.id as id_class, c.description as course_name, c.long_description, c.id as id_course, s.id as id_student, s.email, s.name as student_name, c.date as course_date, c.time as course_time, c.city";
 		//condition
 		$w['s.id'] = $id_student;
 		$w['c.id'] = $id_course;
@@ -90,24 +90,25 @@ class Student extends CI_Controller {
 	}
 	private function header(){
 		$logos = $this->crud->get('courses_images', array('id_course' => $this->id_course, 'type' => 'logo'));
+		$header = '';
 		if( count( $logos ) > 0 ):
 			//se for apenas um mostra dos dois lados.
-			if( count( $logos ) === 1 ):
-				$header = '<div style="text-align: center; top: 50px; ">';
+			if( count( $logos ) == 1 ):
+				$header .= '<div style="text-align: center; top: 50px; ">';
 				$header .= "<table>";
 					$header .= "<tr>";
 						$header .= "<td width=20%><img style='width: 240px;  margin-top: 30px; margin-left: 30px; ' src='".base_url('media/'.$logos[0]->name)."'></td>";
-						$header .= "<td style='text: align:center; padding-top: 140px;' width=60%><center><span style='font-size: 40px; margin-top: 30px; text-align:center;'>".strtoupper($this->lang->line('cert_title'))."</span></center></td>";
+						$header .= "<td style='text: align:center; padding-top: 140px;' width=60%><center><h3 style='font-size: 40px; margin-top: 30px; text-align:center;'>".strtoupper($this->lang->line('cert_title'))."</h3></center></td>";
 						$header .= "<td width=20%><img style='width: 240px ; margin-top: 30px; margin-rigth: 30px; ' src='".base_url('media/'.$logos[0]->name)."'></td>";
 						$header .= "</tr>";
 					$header .= "</table>";
 				$header .= '</div>';
-			elseif( count($logos) === 2):
-				$header = '<div style="text-align: center; top: 50px; ">';
+			elseif( count($logos) == 2):
+				$header .= '<div style="text-align: center; top: 50px; ">';
 					$header .= "<table>";
 						$header .= "<tr>";
 							$header .= "<td width=20%><img style='width: 240px;  margin-top: 30px; margin-left: 30px; ' src='".base_url('media/'.$logos[0]->name)."'></td>";
-							$header .= "<td style='text: align:center; padding-top: 140px;' width=60%><center><span style='font-size: 40px; margin-top: 30px; text-align:center;'>".strtoupper($this->lang->line('cert_title'))."</span></center></td>";
+							$header .= "<td style='text: align:center; padding-top: 140px;' width=60%><center><h3 style='font-size: 40px; margin-top: 30px; text-align:center;'>".strtoupper($this->lang->line('cert_title'))."</h3></center></td>";
 							$header .= "<td width=20%><img style='width: 240px ; margin-top: 30px; margin-rigth: 30px; ' src='".base_url('media/'.$logos[1]->name)."'></td>";
 						$header .= "</tr>";
 					$header .= "</table>";
@@ -115,7 +116,7 @@ class Student extends CI_Controller {
 			else:
 				///mais de 3..
 				///faz um loop exibindo todos (visual nao testado)
-				$header = '<div style="text-align: center; top: 50px; ">';
+				$header .= '<div style="text-align: center; top: 50px; ">';
 					$header .= "<table>";
 						$header .= "<tr>";
 							foreach ($logos as $l) 
@@ -124,15 +125,15 @@ class Student extends CI_Controller {
 							}
 						$header .= "</tr>";
 					$header .= "</table>";
-					$header .= "<center><span style='font-size: 40px;  text-align:center;'>".strtoupper($this->lang->line('cert_title'))."</span></center>";
+					$header .= "<center><h3 style='font-size: 40px; text-align:center;'>".strtoupper($this->lang->line('cert_title'))."</h3></center>";
 				$header .= '</div>';
 			endif;
 		else:
 			//Se nao for passado logo exibe cabecalho padrao
-			$header = '<div style="text-align: center; top: 50px; ">';
+			$header .= '<div style="text-align: center; top: 50px; ">';
 			//titulo antigo - nao sera usado letra gotica - comentado porque ficava mais bonito.
-			//$header .= '<br><br><center><span style="text-align: center; font-family: anglotext; font-size: 200px; color: #333;">'.$this->lang->line('cert_title').'</span></center>';
-			$header .= '<br><br><br><br><center><span style="text-align: center; font-family: arial; font-size: 40px; color: #333;">'.strtoupper($this->lang->line('cert_title')).'</span></center>';
+			//$header .= '<br><br><center><h3 style="text-align: center; font-family: anglotext; font-size: 200px; color: #333;">'.$this->lang->line('cert_title').'</h3></center>';
+			$header .= '<br><br><br><br><center><h3 style="text-align: center; font-family: arial; font-size: 40px; color: #333;">'.strtoupper($this->lang->line('cert_title')).'</h3></center>';
 			$header .= '</div>';
 		endif;
 		return $header;
