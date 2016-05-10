@@ -324,7 +324,7 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('success', $this->lang->line('edit_success_message'));
 		redirect('admin/courses','refresh');
 	}
-	//functions developed for ajax
+	//functions developed to ajax
 	public function get_classes( $id_class = NULL ){
 		$r = "";
 		if ( $id_class != NULL ):
@@ -355,6 +355,7 @@ class Admin extends CI_Controller {
 		endif;
 		echo $r;
 	}	
+
 }
 /* End of file Admin.php */
 /* Location: ./application/controllers/Admin.php */

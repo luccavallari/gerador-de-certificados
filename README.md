@@ -12,5 +12,3 @@ Credenciais para entrar na interface administrativa:
 
 user: admin
 pass: admin
-
-
