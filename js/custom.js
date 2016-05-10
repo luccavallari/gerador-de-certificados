@@ -2,7 +2,10 @@ $(document).ready(function(){
 	$('.confirm').on('click', function () {
         return confirm('confirm?');
     });
-   $('.dataTable').DataTable();
+
+    if( typeof DataTable == 'function' )
+   		$('.dataTable').DataTable();
+
 	$('#id_course').change(function(e){
 		e.preventDefault();
 		content  = $('.class_content');
@@ -94,6 +97,7 @@ $('.open_edit_cert_text').click(function(){
 	$('#form_alter_desc_cert').append('<img src="'+BASE_URL+'images/loading.gif" id="loading_image">');
 	$('#form_alter_desc_cert').prepend('<input type="hidden" name="id" value="'+id+'">');
 
+
 	//get description.
 	$.ajax({
         url: BASE_URL+"admin/get_cert_description/"+id,
@@ -101,7 +105,8 @@ $('.open_edit_cert_text').click(function(){
         dataType: "HTML",
         success: function( response ) {
         	console.log('val: '+response);
-        	$('#long_description_ta').val(response);
+        	//$('#long_description_ta').val(response);
+        	tinyMCE.activeEditor.setContent(response);
         	$('#loading_image').remove();
 
         },

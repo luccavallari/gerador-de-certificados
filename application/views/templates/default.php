@@ -90,7 +90,7 @@
     <script src="<?=base_url('js/custom.js')?>"></script>
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>tinymce.init({ 
-      selector:'textarea',
+      selector:'textarea#long_description_ta', //only for #long_description_ta field
       menubar : false
      });</script>
   </body>
